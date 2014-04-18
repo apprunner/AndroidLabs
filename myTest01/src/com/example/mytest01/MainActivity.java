@@ -24,7 +24,7 @@ public class MainActivity extends ActionBarActivity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
-        findViews();
+        //findViews();	//There are some errors.
  
     }
        
@@ -78,10 +78,12 @@ public class MainActivity extends ActionBarActivity {
             return rootView;
         }
         
+        
         public void setUI(View view){
         	TextView tvMsg = (TextView)view.findViewById(R.id.tvMsg);
         	tvMsg.setText("大家好！");
         }
+        
     }
 
 }
