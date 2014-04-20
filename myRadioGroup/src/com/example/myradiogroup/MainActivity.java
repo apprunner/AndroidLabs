@@ -1,5 +1,7 @@
 package com.example.myradiogroup;
 
+import java.util.List;
+
 import com.example.myradiogroup.R.id;
 
 import android.support.v7.app.ActionBarActivity;
@@ -13,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
 import android.widget.*;
+import android.app.*;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -20,11 +23,28 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        	
         if (savedInstanceState == null) {
+        	
+        	/*
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
+            
+            */
+            
+        	
+            /*
+             * 以上寫法等同以下
+             * 之所以使用getSupportFragmentManager()方法的原因，
+             * 是因為Android有歷史版本的緣故,請參考getSupportFragmentManager()文件說明
+             */
+            android.support.v4.app.FragmentManager fm = getSupportFragmentManager();           
+            android.support.v4.app.FragmentTransaction ft= fm.beginTransaction();
+            PlaceholderFragment pf= new PlaceholderFragment();
+            String fragmentname=pf.getTag();
+            ft.add(R.id.container, pf);
+            ft.commit();
         }
     }
 
@@ -70,7 +90,7 @@ public class MainActivity extends ActionBarActivity {
 				@Override
 				public void onCheckedChanged(RadioGroup arg0, int arg1) {
 					// TODO Auto-generated method stub	
-					int i = arg0.getCheckedRadioButtonId();
+					int checkedid = arg0.getCheckedRadioButtonId();
 					RadioButton rb = (RadioButton)arg0.findViewById(arg1);
 					tvResult.setText(rb.getText());
 				}
