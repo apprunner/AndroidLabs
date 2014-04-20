@@ -1,5 +1,7 @@
 package com.example.mytest01;
 
+import com.example.mytest01.R.id;
+
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -25,7 +27,9 @@ public class MainActivity extends ActionBarActivity {
                     .commit();
         }
         //findViews();	//There are some errors.
- 
+        	
+        
+        
     }
        
     private void findViews(){
@@ -73,7 +77,7 @@ public class MainActivity extends ActionBarActivity {
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             
-            setUI(rootView);
+            //setUI(rootView);
             
             return rootView;
         }
@@ -81,7 +85,15 @@ public class MainActivity extends ActionBarActivity {
         
         public void setUI(View view){
         	TextView tvMsg = (TextView)view.findViewById(R.id.tvMsg);
-        	tvMsg.setText("大家好！");
+        	tvMsg.setText("大家好！onCreateView");
+        }
+        
+        @Override
+        public void onActivityCreated(Bundle savedInstanceState) { 
+            super.onActivityCreated(savedInstanceState);
+            
+        		TextView tvMsg = (TextView)getView().findViewById(R.id.tvMsg);
+        		tvMsg.setText("大家好！onActivityCreated");
         }
         
     }
