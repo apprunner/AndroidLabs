@@ -19,7 +19,6 @@ import android.os.Build;
 
 public class MainActivity extends ActionBarActivity {
     public static final String myAction = "com.example.boardcast01"; 
-    BroadcastReceiver receiver;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
